@@ -1,0 +1,17 @@
+services:
+  postgres:
+    restart: always
+    image: bay.detmir-infra.ru/mirror/images/postgres:16.3-alpine
+    hostname: demo-db
+    container_name: demo-db
+    volumes:
+      - demo_postgres_data:/var/lib/postgresql/data:delegated
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=demo
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=demo
+
+volumes:
+  demo_postgres_data:
